@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>Sprint 4 IT ACADEMY</h1>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</body>
+    <div class="text-center mt-4">
+        <button type="button" onclick="getAllDirectors(movies)" class="btn btn-outline-dark">Get all Directors</button>
+        <button type="button" onclick="getMoviesFromDirector(movies, 'Francis Ford Coppola')" class="btn btn-outline-dark">Get Movie From Director</button>
+        <button type="button" onclick="moviesAverageOfDirector(movies, 'Francis Ford Coppola')" class="btn btn-outline-dark">Movies Average From Director</button>
+        <button type="button" onclick="orderAlphabetically(movies)" class="btn btn-outline-dark">Order Alphabetically</button>
+        <button type="button" onclick="orderByYear(movies)" class="btn btn-outline-dark">Order By Year</button>
+        <button type="button" onclick="moviesAverageByCategory(movies, 'Drama')" class="btn btn-outline-dark">Average By Category</button>
+        <button type="button" onclick="hoursToMinutes(movies)" class="btn btn-outline-dark">Hours To Minutes</button>
+        <button type="button" onclick="bestFilmOfYear(movies, '1984')" class="btn btn-outline-dark">bestFilmOfYear</button>
+    </div>
+
+ <!-- Core theme JS-->
+    <script src="data.js"></script>
+    <script src="films.js"></script>
+</html>
