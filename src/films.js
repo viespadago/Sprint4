@@ -52,27 +52,20 @@ function orderAlphabetically(array) {
 // Exercise 5: Order by year, ascending
 function orderByYear(array) {
   let result =  [];
-  var found=0;
     for(i=0; i<array.length; i++){
-        /*for(j=0; j<result.length; j++){
-            if (result[j].year==array[i].year){
-                /*var title=[];
-                title.title=array[i].title;
-                result[j].push(title);
-                const ordered = result[j].sort((a, b) => a.title.localeCompare(b.title));
-                found=1;
-            }
+          result.push({title: array[i].title, year: array[i].year});
         }
-        if (found==0){
-            movie.title=array[i].title;
-            movie.year=array[i].year;*/
-            result.push({title: array[i].title, year: array[i].year});
-        }
-        /*found=0;
-    }*/    
-  const ordered = result.sort((a, b) => a.year - b.year);
-  console.log("EXERCICE 5 ->", ordered);
-  return ordered;
+  var movie=result[0];
+  if (!movie ||!("title" in movie)){
+    const ordered = result.sort((a, b) => a.year - b.year);
+  }else if (movie["title"] == undefined){
+    const ordered = result.sort((a, b) => a.year - b.year);
+  }else{
+    const ordered = result.sort((a, b) => a.title.localeCompare(b.title));  
+    const ordered2 = ordered.sort((a, b) => a.year - b.year);
+  }
+  console.log("EXERCICE 5 ->", result);
+  return result;
 }
 
 // Exercise 6: Calculate the average of the movies in a category
@@ -90,19 +83,17 @@ function moviesAverageByCategory(array, genre) {
 
 // Exercise 7: Modify the duration of movies to minutes
 function hoursToMinutes(array) {
-  let result =  [];
+  let result = [];
   for(i=0; i<array.length; i++){
-          var movie=array[i];
-          var horas=parseInt(movie.duration.substring(0,1))*60;
-          if (array[i].duration.slice(4,5)=='m'){
-            var minutos=parseInt(movie.duration.substring(3,4));
-          }else if (array[i].duration.slice(4,5)==''){
-            var minutos=0;  
-          }else{
-            var minutos=parseInt(movie.duration.substring(3,5));
-          }
-          movie.duration=horas+minutos;
-          result.push(movie);
+    var movie=array[i];
+    matches = movie.duration.match(/\d+/g);
+    var horas=parseInt(matches[0])*60;
+    var minutos=parseInt(matches[1]);
+      if (isNaN(minutos)) {
+        var minutos=0;
+      }
+    movie.duration=parseInt(horas+minutos);
+    result.push(movie);
   }
   console.log("EXERCICE 7 ->", result);
   return result;
@@ -119,7 +110,7 @@ function bestFilmOfYear(array, year) {
   const theBest = result.sort((a, b) => b.score - a.score);
   let trueBest=[];
   trueBest.push(theBest[0]);
-  console.log("EXERCICE 8 ->", result, theBest, theBest[0], trueBest);
+  console.log("EXERCICE 8 ->", result, trueBest);
   return trueBest;
 }
 
